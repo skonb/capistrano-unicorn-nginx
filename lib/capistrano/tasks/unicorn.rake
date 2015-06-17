@@ -45,8 +45,9 @@ namespace :unicorn do
           sudo 'chkconfig', fetch(:unicorn_service), 'on'
         when 'ubuntu'
           sudo 'update-rc.d', '-f', fetch(:unicorn_service), 'defaults'
+        else
+          warn "fail to setting update-rc or chkconfig. What is server os?"
       end
-      sudo 'update-rc.d', '-f', fetch(:unicorn_service), 'defaults'
     end
   end
 
