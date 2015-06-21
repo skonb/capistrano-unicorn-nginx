@@ -45,6 +45,8 @@ namespace :unicorn do
           sudo 'chkconfig', fetch(:unicorn_service), 'on'
         when 'ubuntu'
           sudo 'update-rc.d', '-f', fetch(:unicorn_service), 'defaults'
+        when 'Amazon Linux AMI'
+          sudo 'chkconfig', fetch(:unicorn_service), 'on'
         else
           warn "fail to setting update-rc or chkconfig. What is server os?"
       end
